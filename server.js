@@ -9,7 +9,10 @@ const port = 3001;
 // Use environment variable for API key
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
 
-app.use(cors()); // Allows your React app to connect to this server
+app.use(cors({
+  origin: "https://ai-proposal-writer-bysania.netlify.app/",
+  credentials:true
+})); // Allows your React app to connect to this server
 app.use(express.json());
 
 app.post('/api/generate-proposal', async (req, res) => {
